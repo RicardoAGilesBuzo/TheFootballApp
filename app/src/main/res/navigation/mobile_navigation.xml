@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_premier">
+
+    <fragment
+        android:id="@+id/navigation_premier"
+        android:name="com.example.thefootballapp.ui.premier.standing.PremierStandingFragment"
+        android:label="@string/premier"
+        tools:layout="@layout/fragment_premier_standing">
+        <!--<action
+            android:id="@+id/action_navigation_premierStanding_to_navigation_teamDetail"
+            app:destination="@id/navigation_details" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_laliga"
+        android:name="com.example.thefootballapp.ui.laliga.standing.LaLigaStandingFragment"
+        android:label="@string/laliga"
+        tools:layout="@layout/fragment_la_liga_standing">
+        <!--<action
+            android:id="@+id/action_navigation_laligaStanding_to_navigation_teamDetail"
+            app:destination="@id/navigation_details" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_bundes"
+        android:name="com.example.thefootballapp.ui.bundes.standing.BundesStandingFragment"
+        android:label="@string/laliga"
+        tools:layout="@layout/fragment_bundes_standing">
+        <!--<action
+            android:id="@+id/action_navigation_bundesStanding_to_navigation_teamDetail"
+            app:destination="@id/navigation_details" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_match"
+        android:name="com.example.thefootballapp.ui.premier.match.PremierMatchFragment"
+        android:label="@string/laliga"
+        tools:layout="@layout/fragment_premier_match"/>
+
+    <!--<fragment
+        android:id="@+id/navigation_details"
+        android:name="com.example.thefootballapp.ui.team.TeamDetailFragment"
+        android:label="@string/team_detail"
+        tools:layout="@layout/fragment_team_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>-->
+
+</navigation>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_premier"
+        android:icon="@drawable/pliconsvg"
+        android:title="@string/premier" />
+
+    <item
+        android:id="@+id/navigation_laliga"
+        android:icon="@drawable/laligaiconsvg"
+        android:title="@string/laliga" />
+
+    <item
+        android:id="@+id/navigation_bundes"
+        android:icon="@drawable/bundesiconsvg"
+        android:title="@string/bundes" />
+
+    <item
+        android:id="@+id/navigation_match"
+        android:icon="@drawable/laligaiconsvg"
+        android:title="@string/seriea" />
+
+    <!--<item
+        android:id="@+id/navigation_bundes"
+        android:icon="@drawable/bundesligaicon"
+        android:title="@string/bundes" />
+
+    <item
+        android:id="@+id/navigation_seriea"
+        android:icon="@drawable/serieaicon"
+        android:title="@string/seriea" />
+
+    <item
+        android:id="@+id/navigation_leagueone"
+        android:icon="@drawable/league1icon"
+        android:title="@string/ligueone" />-->
+
+</menu>
