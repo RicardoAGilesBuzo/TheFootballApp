@@ -81,6 +81,23 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getLaLigaMatch(): Flow<ResponseType<List<Matche>>> = flow {
+        emit(ResponseType.LOADING)
+
+        try {
+            val response = apiDetails.getLaLigaMatch()
+            if (response.isSuccessful){
+                response.body()?.let { it ->
+                    emit(ResponseType.SUCCESS(it.matches))
+                }
+            } else{
+                emit(ResponseType.ERROR(response.message()))
+            }
+        } catch (e:java.lang.Exception){
+            emit(ResponseType.ERROR(e.localizedMessage as String))
+        }
+    }
+
     override suspend fun getTeam(id: Int): Flow<ResponseType<TeamModel>> = flow{
         emit(ResponseType.LOADING)
 

@@ -12,6 +12,7 @@ interface Repository {
     suspend fun getLaLigaStanding(): Flow<ResponseType<List<Table>>>
     suspend fun getBundesStanding(): Flow<ResponseType<List<Table>>>
     suspend fun getPremierMatch(): Flow<ResponseType<List<Matche>>>
+    suspend fun getLaLigaMatch(): Flow<ResponseType<List<Matche>>>
     suspend fun getTeam(id: Int): Flow<ResponseType<TeamModel>>
     suspend fun getMatchTeam(id: Int, limit: Int, status: String): Flow<ResponseType<List<MatcheTeam>>>
 }
