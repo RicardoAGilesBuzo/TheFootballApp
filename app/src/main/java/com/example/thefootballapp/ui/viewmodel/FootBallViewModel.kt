@@ -67,6 +67,14 @@ class FootBallViewModel @Inject constructor(
         }
     }
 
+    fun getLaLigaMatchList(){
+        viewModelScope.launch {
+            repository.getLaLigaMatch().collect{
+                _matchResult.postValue(it)
+            }
+        }
+    }
+
     fun getTeamDetailList(id: Int = footballObject!!.team.id){
         viewModelScope.launch {
             repository.getTeam(id).collect{

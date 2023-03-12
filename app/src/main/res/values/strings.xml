@@ -10,4 +10,7 @@
     <string name="ligueone">Ligue1</string>
     <string name="match">MATCH</string>
     <string name="team_detail">Team</string>
+    <string name="premier_banner">Premier banner</string>
+    <string name="navigation_tabs">Navigation tabs</string>
+    <string name="container">Container</string>
 </resources>

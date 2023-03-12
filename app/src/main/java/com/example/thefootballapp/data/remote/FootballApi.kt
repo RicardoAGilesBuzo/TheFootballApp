@@ -23,6 +23,9 @@ interface FootballApi {
     @GET(PLMATCH)
     suspend fun getPremierLeagueMatch(): Response<MatchModel>
 
+    @GET(LLMATCH)
+    suspend fun getLaLigaMatch(): Response<MatchModel>
+
     @GET(TEAM)
     suspend fun getTeamById(
         @Path("id") id: Int
@@ -46,6 +49,7 @@ interface FootballApi {
         const val LALIGA = "v4/competitions/PD/standings"
         const val BUNDES = "v4/competitions/BL1/standings"
         const val PLMATCH = "v4/competitions/2021/matches"
+        const val LLMATCH = "v4/competitions/2014/matches"
         const val TEAM = "v4/teams/{$ID_PATH}"
         const val TEAMLASTMATCH = "v4/teams/{$ID_PATH}/matches"
         const val LIMIT = "limit"

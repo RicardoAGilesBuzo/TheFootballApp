@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_premier"
-        android:name="com.example.thefootballapp.ui.premier.standing.PremierStandingFragment"
+        android:name="com.example.thefootballapp.ui.premier.PremierFragment"
         android:label="@string/premier"
-        tools:layout="@layout/fragment_premier_standing">
+        tools:layout="@layout/fragment_premier">
         <!--<action
             android:id="@+id/action_navigation_premierStanding_to_navigation_teamDetail"
             app:destination="@id/navigation_details" />-->
@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/navigation_laliga"
-        android:name="com.example.thefootballapp.ui.laliga.standing.LaLigaStandingFragment"
+        android:name="com.example.thefootballapp.ui.laliga.LaLigaFragment"
         android:label="@string/laliga"
-        tools:layout="@layout/fragment_la_liga_standing">
+        tools:layout="@layout/fragment_la_liga">
         <!--<action
             android:id="@+id/action_navigation_laligaStanding_to_navigation_teamDetail"
             app:destination="@id/navigation_details" />-->
