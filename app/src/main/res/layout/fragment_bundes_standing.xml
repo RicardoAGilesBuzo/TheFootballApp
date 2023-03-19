@@ -12,13 +12,6 @@
         android:orientation="vertical"
         android:background="@color/black">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:src="@drawable/bundesbannersvg"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +37,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="15dp"
                 android:textSize="12dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/iv_team_logo"
@@ -126,7 +119,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_standing"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="15"/>
 

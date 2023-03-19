@@ -3,7 +3,6 @@ package com.example.thefootballapp.ui.laliga.standing
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.compose.ui.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.clear

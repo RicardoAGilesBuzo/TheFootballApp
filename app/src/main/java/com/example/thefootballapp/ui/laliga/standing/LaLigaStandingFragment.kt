@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thefootballapp.R
 import com.example.thefootballapp.data.model.standing.Table
-import com.example.thefootballapp.databinding.FragmentLaLigaStandingBinding
 import com.example.thefootballapp.ui.team.TeamDetailFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
+import com.example.thefootballapp.databinding.FragmentLaLigaStandingBinding
+import com.example.thefootballapp.ui.team.TeamFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,11 +24,13 @@ class LaLigaStandingFragment : Fragment() {
 
     private val mAdapter by lazy {
         LaLigaStandingAdapter {
-            Toast.makeText(context, "${it.team.name} clicked!", Toast.LENGTH_SHORT).show()
             viewModel.footballObject = it
-            //findNavController().navigate(R.id.action_navigation_laligaStanding_to_navigation_teamDetail)
-            val modalBottomSheet = TeamDetailFragment()
-            modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
+            if (!viewModel.teamSelected){
+                viewModel.footballObject = it
+                val modalBottomSheet = TeamFragment()
+                modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
+                viewModel.teamSelected = true
+            }
         }
     }
 
@@ -45,7 +46,7 @@ class LaLigaStandingFragment : Fragment() {
             adapter = mAdapter
         }
 
-        viewModel.result.observe(viewLifecycleOwner) {
+        viewModel.standingResultPD.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseType.LOADING -> {
                 }
@@ -53,10 +54,10 @@ class LaLigaStandingFragment : Fragment() {
                     initViews(it.response)
                 }
                 is ResponseType.ERROR -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }

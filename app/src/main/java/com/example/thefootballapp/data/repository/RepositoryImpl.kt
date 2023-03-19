@@ -2,6 +2,7 @@ package com.example.thefootballapp.data.repository
 
 import com.example.thefootballapp.data.model.match.Matche
 import com.example.thefootballapp.data.model.standing.Table
+import com.example.thefootballapp.data.model.team.Squad
 import com.example.thefootballapp.data.model.team.TeamModel
 import com.example.thefootballapp.data.model.team.lastmatch.MatcheTeam
 import com.example.thefootballapp.data.remote.FootballApi
@@ -13,11 +14,12 @@ import javax.inject.Inject
 class RepositoryImpl @Inject constructor(
     private val apiDetails: FootballApi
 ) : Repository {
-    override suspend fun getPremierStanding(): Flow<ResponseType<List<Table>>> = flow{
+
+    override suspend fun getPremierStanding(league_id: String): Flow<ResponseType<List<Table>>> = flow{
         emit(ResponseType.LOADING)
 
         try {
-            val response = apiDetails.getPremierLeagueTable()
+            val response = apiDetails.getStanding(league_id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.standings[0].table))
@@ -30,11 +32,11 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getLaLigaStanding(): Flow<ResponseType<List<Table>>> = flow{
+    override suspend fun getLaLigaStanding(league_id: String): Flow<ResponseType<List<Table>>> = flow{
         emit(ResponseType.LOADING)
 
         try {
-            val response = apiDetails.getLaLigaTable()
+            val response = apiDetails.getStanding(league_id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.standings[0].table))
@@ -47,11 +49,11 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBundesStanding(): Flow<ResponseType<List<Table>>> = flow{
+    override suspend fun getBundesStanding(league_id: String): Flow<ResponseType<List<Table>>> = flow{
         emit(ResponseType.LOADING)
 
         try {
-            val response = apiDetails.getBundesTable()
+            val response = apiDetails.getStanding(league_id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.standings[0].table))
@@ -64,11 +66,11 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPremierMatch(): Flow<ResponseType<List<Matche>>> = flow {
+    override suspend fun getPremierMatch(match_id: Int): Flow<ResponseType<List<Matche>>> = flow {
         emit(ResponseType.LOADING)
 
         try {
-            val response = apiDetails.getPremierLeagueMatch()
+            val response = apiDetails.getMatches(match_id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.matches))
@@ -81,11 +83,28 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getLaLigaMatch(): Flow<ResponseType<List<Matche>>> = flow {
+    override suspend fun getLaLigaMatch(match_id: Int): Flow<ResponseType<List<Matche>>> = flow {
         emit(ResponseType.LOADING)
 
         try {
-            val response = apiDetails.getLaLigaMatch()
+            val response = apiDetails.getMatches(match_id)
+            if (response.isSuccessful){
+                response.body()?.let { it ->
+                    emit(ResponseType.SUCCESS(it.matches))
+                }
+            } else{
+                emit(ResponseType.ERROR(response.message()))
+            }
+        } catch (e:java.lang.Exception){
+            emit(ResponseType.ERROR(e.localizedMessage as String))
+        }
+    }
+
+    override suspend fun getBundesMatch(match_id: Int): Flow<ResponseType<List<Matche>>> = flow {
+        emit(ResponseType.LOADING)
+
+        try {
+            val response = apiDetails.getMatches(match_id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.matches))
@@ -115,6 +134,23 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getSquad(id: Int): Flow<ResponseType<List<Squad>>>  = flow{
+        emit(ResponseType.LOADING)
+
+        try {
+            val response = apiDetails.getTeamById(id)
+            if (response.isSuccessful){
+                response.body()?.let { it ->
+                    emit(ResponseType.SUCCESS(it.squad))
+                }
+            } else{
+                emit(ResponseType.ERROR(response.message()))
+            }
+        } catch (e:java.lang.Exception){
+            emit(ResponseType.ERROR(e.localizedMessage as String))
+        }
+    }
+
     override suspend fun getMatchTeam(
         id: Int,
         limit: Int,
@@ -124,6 +160,23 @@ class RepositoryImpl @Inject constructor(
 
         try {
             val response = apiDetails.getLastTeamMatch(id, limit, status)
+            if (response.isSuccessful){
+                response.body()?.let { it ->
+                    emit(ResponseType.SUCCESS(it.matches))
+                }
+            } else{
+                emit(ResponseType.ERROR(response.message()))
+            }
+        } catch (e:java.lang.Exception){
+            emit(ResponseType.ERROR(e.localizedMessage as String))
+        }
+    }
+
+    override suspend fun getAllMatchTeam(id: Int): Flow<ResponseType<List<Matche>>> = flow{
+        emit(ResponseType.LOADING)
+
+        try {
+            val response = apiDetails.getTeamMatch(id)
             if (response.isSuccessful){
                 response.body()?.let { it ->
                     emit(ResponseType.SUCCESS(it.matches))

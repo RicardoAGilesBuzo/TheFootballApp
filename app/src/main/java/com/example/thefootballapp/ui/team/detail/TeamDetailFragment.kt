@@ -1,4 +1,4 @@
-package com.example.thefootballapp.ui.team
+package com.example.thefootballapp.ui.team.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import coil.ImageLoader
 import coil.clear
@@ -17,12 +18,11 @@ import com.example.thefootballapp.data.model.team.lastmatch.MatcheTeam
 import com.example.thefootballapp.databinding.FragmentTeamDetailBinding
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TeamDetailFragment : BottomSheetDialogFragment() {
+class TeamDetailFragment : Fragment() {
     private var _binding: FragmentTeamDetailBinding? = null
     private val binding get() = _binding!!
     private val viewModel: FootBallViewModel by activityViewModels()
@@ -38,6 +38,11 @@ class TeamDetailFragment : BottomSheetDialogFragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentTeamDetailBinding.inflate(inflater, container, false)
+
+        /*_binding!!.ivClose.setOnClickListener {
+            viewModel.teamSelected = false
+            this.dismiss()
+        }*/
 
         viewModel.teamResult.observe(viewLifecycleOwner) {
             when (it) {
@@ -75,6 +80,8 @@ class TeamDetailFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
+
+
     private fun initViews(data: TeamModel){
         data.let {
             _binding!!.ivName.text = data.name
@@ -87,73 +94,18 @@ class TeamDetailFragment : BottomSheetDialogFragment() {
                 Picasso.get()
                     .load(crest)
                     .into(_binding!!.ivLogo)
+            }/*
+            val flag = data.area.flag
+            if (flag.lowercase().endsWith(".svg")){
+                _binding!!.ivCountry.loadSvg(flag)
             }
-            _binding!!.ivStadium.text = data.venue
-            /*val lastMatch: List<String> = viewModel.lastGames.split(",").toList()
-            for (i in lastMatch.indices){
-                when(i){
-                    0 -> {
-                        _binding!!.ivLast1.text = lastMatch[i]
-                        if (lastMatch[i].lowercase() == "w"){
-                            _binding!!.ivLast1.setBackgroundResource(R.drawable.ic_won_circle)
-                        }
-                        else if (lastMatch[i].lowercase() == "l"){
-                            _binding!!.ivLast1.setBackgroundResource(R.drawable.ic_lost_circle)
-                        }
-                        else{
-                            _binding!!.ivLast1.setBackgroundResource(R.drawable.ic_draw_circle)
-                        }
-                    }
-                    1 -> {
-                        _binding!!.ivLast2.text = lastMatch[i]
-                        if (lastMatch[i].lowercase() == "w"){
-                            _binding!!.ivLast2.setBackgroundResource(R.drawable.ic_won_circle)
-                        }
-                        else if (lastMatch[i].lowercase() == "l"){
-                            _binding!!.ivLast2.setBackgroundResource(R.drawable.ic_lost_circle)
-                        }
-                        else{
-                            _binding!!.ivLast2.setBackgroundResource(R.drawable.ic_draw_circle)
-                        }
-                    }
-                    2 -> {
-                        _binding!!.ivLast3.text = lastMatch[i]
-                        if (lastMatch[i].lowercase() == "w"){
-                            _binding!!.ivLast3.setBackgroundResource(R.drawable.ic_won_circle)
-                        }
-                        else if (lastMatch[i].lowercase() == "l"){
-                            _binding!!.ivLast3.setBackgroundResource(R.drawable.ic_lost_circle)
-                        }
-                        else{
-                            _binding!!.ivLast3.setBackgroundResource(R.drawable.ic_draw_circle)
-                        }
-                    }
-                    3 -> {
-                        _binding!!.ivLast4.text = lastMatch[i]
-                        if (lastMatch[i].lowercase() == "w"){
-                            _binding!!.ivLast4.setBackgroundResource(R.drawable.ic_won_circle)
-                        }
-                        else if (lastMatch[i].lowercase() == "l"){
-                            _binding!!.ivLast4.setBackgroundResource(R.drawable.ic_lost_circle)
-                        }
-                        else{
-                            _binding!!.ivLast4.setBackgroundResource(R.drawable.ic_draw_circle)
-                        }
-                    }
-                    4 -> {
-                        _binding!!.ivLast5.text = lastMatch[i]
-                        if (lastMatch[i].lowercase() == "w"){
-                            _binding!!.ivLast5.setBackgroundResource(R.drawable.ic_won_circle)
-                        }
-                        else if (lastMatch[i].lowercase() == "l"){
-                            _binding!!.ivLast5.setBackgroundResource(R.drawable.ic_lost_circle)
-                        }
-                        else{
-                            _binding!!.ivLast5.setBackgroundResource(R.drawable.ic_draw_circle)
-                        }
-                    }
-                }
+            else {
+                Picasso.get()
+                    .load(flag)
+                    .into(_binding!!.ivCountry)
             }*/
+            _binding!!.ivFounded.text = data.founded.toString()
+            _binding!!.ivStadium.text = data.venue
         }
     }
 
@@ -164,7 +116,7 @@ class TeamDetailFragment : BottomSheetDialogFragment() {
             _binding!!.ivTeam3.clear()
             _binding!!.ivTeam4.clear()
             _binding!!.ivTeam5.clear()
-            for (i in 0 until _data.size){
+            for (i in _data.indices){
                 if (i==0){
                     _binding!!.ivTeam1Result.text = "${_data[i].score.fullTime.home}-${_data[i].score.fullTime.away}"
                     if (_data[i].homeTeam.id == _viewModel.footballObject!!.team.id){

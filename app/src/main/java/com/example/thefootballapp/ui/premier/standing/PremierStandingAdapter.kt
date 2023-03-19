@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefootballapp.data.model.standing.Table
-import com.example.thefootballapp.databinding.ItemDetailsBinding
 import coil.ImageLoader
 import coil.clear
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.thefootballapp.databinding.ItemDetailsBinding
 import com.squareup.picasso.Picasso
 
 class PremierStandingAdapter (

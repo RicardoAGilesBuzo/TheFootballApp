@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thefootballapp.R
 import com.example.thefootballapp.data.model.standing.Table
 import com.example.thefootballapp.databinding.FragmentBundesStandingBinding
-import com.example.thefootballapp.ui.team.TeamDetailFragment
+import com.example.thefootballapp.ui.team.detail.TeamDetailFragment
+import com.example.thefootballapp.ui.team.TeamFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,11 +23,12 @@ class BundesStandingFragment : Fragment() {
 
     private val mAdapter by lazy {
         BundesStandingAdapter {
-            Toast.makeText(context, "${it.team.name} clicked!", Toast.LENGTH_SHORT).show()
-            viewModel.footballObject = it
-            //findNavController().navigate(R.id.action_navigation_bundesStanding_to_navigation_teamDetail)
-            val modalBottomSheet = TeamDetailFragment()
-            modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
+            if (!viewModel.teamSelected){
+                viewModel.footballObject = it
+                val modalBottomSheet = TeamFragment()
+                modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
+                viewModel.teamSelected = true
+            }
         }
     }
 
@@ -45,7 +44,7 @@ class BundesStandingFragment : Fragment() {
             adapter = mAdapter
         }
 
-        viewModel.result.observe(viewLifecycleOwner) {
+        viewModel.standingResultBL.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseType.LOADING -> {
                 }
@@ -53,10 +52,10 @@ class BundesStandingFragment : Fragment() {
                     initViews(it.response)
                 }
                 is ResponseType.ERROR -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }

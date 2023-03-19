@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.thefootballapp.R
+import com.example.thefootballapp.databinding.FragmentLaLigaBinding
 import com.example.thefootballapp.ui.laliga.match.LaLigaMatchFragment
 import com.example.thefootballapp.ui.laliga.standing.LaLigaStandingFragment
 import com.example.thefootballapp.ui.premier.match.PremierMatchFragment
@@ -16,31 +17,29 @@ import com.example.thefootballapp.ui.premier.standing.PremierStandingFragment
 import com.google.android.material.tabs.TabLayout
 
 class LaLigaFragment : Fragment() {
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager
+    private val binding by lazy {
+        FragmentLaLigaBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_la_liga, container, false)
-        tabLayout = view.findViewById(R.id.tab_layout)
-        viewPager = view.findViewById(R.id.view_pager)
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
-        tabLayout.setupWithViewPager(viewPager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     private fun setupViewPager() {
         val adapter = MyPagerAdapter(childFragmentManager)
         adapter.addFragment(LaLigaStandingFragment(), "Standing")
         adapter.addFragment(LaLigaMatchFragment(), "Matches")
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
     }
 
     class MyPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {

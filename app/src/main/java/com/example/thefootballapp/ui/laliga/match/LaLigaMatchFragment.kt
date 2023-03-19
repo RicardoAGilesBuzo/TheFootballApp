@@ -10,8 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thefootballapp.data.model.match.Matche
 import com.example.thefootballapp.databinding.FragmentLaLigaMatchBinding
-import com.example.thefootballapp.databinding.FragmentPremierMatchBinding
-import com.example.thefootballapp.ui.premier.match.PremierMatchAdapter
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 
@@ -38,7 +36,7 @@ class LaLigaMatchFragment : Fragment() {
             adapter = mAdapter
         }
 
-        viewModel.matchResult.observe(viewLifecycleOwner) {
+        viewModel.matchResultPD.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseType.LOADING -> {
                 }
@@ -46,10 +44,10 @@ class LaLigaMatchFragment : Fragment() {
                     initViews(it.response)
                 }
                 is ResponseType.ERROR -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }

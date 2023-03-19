@@ -6,9 +6,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.thefootballapp.R
+import com.example.thefootballapp.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.thefootballapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_premier, R.id.navigation_laliga, R.id.navigation_bundes, R.id.navigation_match
+                R.id.navigation_premier, R.id.navigation_laliga, R.id.navigation_bundes
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
