@@ -1,4 +1,4 @@
-package com.example.thefootballapp.ui.team
+package com.example.thefootballapp.ui.team.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,19 +8,16 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import coil.ImageLoader
 import coil.clear
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.thefootballapp.R
-import com.example.thefootballapp.data.model.team.Squad
 import com.example.thefootballapp.data.model.team.TeamModel
 import com.example.thefootballapp.data.model.team.lastmatch.MatcheTeam
 import com.example.thefootballapp.databinding.FragmentTeamDetailBinding
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 

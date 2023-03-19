@@ -1,4 +1,4 @@
-package com.example.thefootballapp.ui.team
+package com.example.thefootballapp.ui.team.match
 
 import android.os.Build
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import coil.clear
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.thefootballapp.data.model.match.Matche
-import com.example.thefootballapp.databinding.ItemMatchBinding
 import com.example.thefootballapp.databinding.ItemTeamMatchBinding
 import com.squareup.picasso.Picasso
 import java.time.Instant

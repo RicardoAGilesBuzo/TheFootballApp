@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thefootballapp.data.model.standing.Table
 import com.example.thefootballapp.databinding.FragmentBundesStandingBinding
-import com.example.thefootballapp.ui.team.TeamDetailFragment
+import com.example.thefootballapp.ui.team.detail.TeamDetailFragment
 import com.example.thefootballapp.ui.team.TeamFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType

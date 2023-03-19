@@ -1,22 +1,10 @@
-package com.example.thefootballapp.ui.team
+package com.example.thefootballapp.ui.team.squad
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.clear
-import coil.decode.SvgDecoder
-import coil.request.ImageRequest
-import com.example.thefootballapp.data.model.match.Matche
 import com.example.thefootballapp.data.model.team.Squad
 import com.example.thefootballapp.databinding.ItemRosterBinding
-import com.example.thefootballapp.databinding.ItemTeamMatchBinding
-import com.squareup.picasso.Picasso
-import java.time.Instant
-import java.time.ZoneId
 
 class TeamRosterAdapter (
     private val footballListTeam: MutableList<Squad> = mutableListOf(),

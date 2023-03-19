@@ -1,4 +1,4 @@
-package com.example.thefootballapp.ui.team
+package com.example.thefootballapp.ui.team.match
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thefootballapp.R
 import com.example.thefootballapp.data.model.match.Matche
-import com.example.thefootballapp.databinding.FragmentBundesMatchBinding
 import com.example.thefootballapp.databinding.FragmentTeamMatchBinding
-import com.example.thefootballapp.ui.bundes.match.BundesMatchAdapter
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 

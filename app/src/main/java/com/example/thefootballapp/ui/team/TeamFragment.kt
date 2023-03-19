@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.activityViewModels
-import com.example.thefootballapp.databinding.FragmentBundesBinding
 import com.example.thefootballapp.databinding.FragmentTeamBinding
-import com.example.thefootballapp.ui.bundes.match.BundesMatchFragment
-import com.example.thefootballapp.ui.bundes.standing.BundesStandingFragment
+import com.example.thefootballapp.ui.team.detail.TeamDetailFragment
+import com.example.thefootballapp.ui.team.match.TeamMatchFragment
+import com.example.thefootballapp.ui.team.squad.TeamRosterFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
