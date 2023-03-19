@@ -9,10 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thefootballapp.data.model.match.Matche
-import com.example.thefootballapp.data.model.standing.Table
 import com.example.thefootballapp.databinding.FragmentPremierMatchBinding
-import com.example.thefootballapp.databinding.FragmentPremierStandingBinding
-import com.example.thefootballapp.ui.premier.standing.PremierStandingAdapter
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +38,7 @@ class PremierMatchFragment : Fragment() {
             adapter = mAdapter
         }
 
-        viewModel.matchResult.observe(viewLifecycleOwner) {
+        viewModel.matchResultPL.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseType.LOADING -> {
                 }

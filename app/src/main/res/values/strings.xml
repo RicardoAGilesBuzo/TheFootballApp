@@ -13,4 +13,8 @@
     <string name="premier_banner">Premier banner</string>
     <string name="navigation_tabs">Navigation tabs</string>
     <string name="container">Container</string>
+    <string name="bundes_banner">bundes banner</string>
+    <string name="teamimg">TeamImg</string>
+    <string name="stadium">Stadium</string>
+    <string name="founded">Founded</string>
 </resources>

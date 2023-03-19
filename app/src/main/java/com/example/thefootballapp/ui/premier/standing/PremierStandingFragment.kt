@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thefootballapp.R
 import com.example.thefootballapp.data.model.standing.Table
 import com.example.thefootballapp.databinding.FragmentPremierStandingBinding
 import com.example.thefootballapp.ui.team.TeamDetailFragment
+import com.example.thefootballapp.ui.team.TeamFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,16 +24,14 @@ class PremierStandingFragment : Fragment() {
 
     private val mAdapter by lazy {
         PremierStandingAdapter {
-            Toast.makeText(context, "${it.team.name} clicked!", Toast.LENGTH_SHORT).show()
             viewModel.footballObject = it
-            setUpViews()
+            if (!viewModel.teamSelected){
+                viewModel.footballObject = it
+                val modalBottomSheet = TeamFragment()
+                modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
+                viewModel.teamSelected = true
+            }
         }
-    }
-
-    private fun setUpViews() {
-        //findNavController().navigate(R.id.action_navigation_premierStanding_to_navigation_teamDetail)
-        val modalBottomSheet = TeamDetailFragment()
-        modalBottomSheet.show(childFragmentManager, TeamDetailFragment.TAG)
     }
 
     override fun onCreateView(
@@ -49,7 +46,7 @@ class PremierStandingFragment : Fragment() {
             adapter = mAdapter
         }
 
-        viewModel.result.observe(viewLifecycleOwner) {
+        viewModel.standingResultPL.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseType.LOADING -> {
                 }

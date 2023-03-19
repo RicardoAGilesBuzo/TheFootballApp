@@ -11,8 +11,6 @@ import coil.ImageLoader
 import coil.clear
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
-import com.bumptech.glide.Glide
-import com.example.thefootballapp.R
 import com.example.thefootballapp.data.model.match.Matche
 import com.example.thefootballapp.databinding.ItemMatchBinding
 import com.squareup.picasso.Picasso

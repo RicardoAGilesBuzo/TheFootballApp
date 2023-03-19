@@ -21,15 +21,9 @@
 
     <fragment
         android:id="@+id/navigation_bundes"
-        android:name="com.example.thefootballapp.ui.bundes.standing.BundesStandingFragment"
+        android:name="com.example.thefootballapp.ui.bundes.BundesFragment"
         android:label="@string/laliga"
-        tools:layout="@layout/fragment_bundes_standing">
+        tools:layout="@layout/fragment_bundes">
     </fragment>
-
-    <fragment
-        android:id="@+id/navigation_match"
-        android:name="com.example.thefootballapp.ui.premier.match.PremierMatchFragment"
-        android:label="@string/laliga"
-        tools:layout="@layout/fragment_premier_match"/>
 
 </navigation>
