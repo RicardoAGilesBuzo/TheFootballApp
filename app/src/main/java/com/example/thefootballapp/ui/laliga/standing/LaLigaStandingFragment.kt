@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thefootballapp.data.model.standing.Table
-import com.example.thefootballapp.ui.team.TeamDetailFragment
 import com.example.thefootballapp.ui.viewmodel.FootBallViewModel
 import com.example.thefootballapp.util.ResponseType
 import com.example.thefootballapp.databinding.FragmentLaLigaStandingBinding
 import com.example.thefootballapp.ui.team.TeamFragment
+import com.example.thefootballapp.ui.team.detail.TeamDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
