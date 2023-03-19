@@ -43,6 +43,7 @@ class FootBallViewModel @Inject constructor(
         }
     }
 
+
     fun getLaLigaTableList(){
         viewModelScope.launch {
             repository.getLaLigaStanding().collect{

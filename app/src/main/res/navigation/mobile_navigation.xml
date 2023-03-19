@@ -10,9 +10,6 @@
         android:name="com.example.thefootballapp.ui.premier.PremierFragment"
         android:label="@string/premier"
         tools:layout="@layout/fragment_premier">
-        <!--<action
-            android:id="@+id/action_navigation_premierStanding_to_navigation_teamDetail"
-            app:destination="@id/navigation_details" />-->
     </fragment>
 
     <fragment
@@ -20,9 +17,6 @@
         android:name="com.example.thefootballapp.ui.laliga.LaLigaFragment"
         android:label="@string/laliga"
         tools:layout="@layout/fragment_la_liga">
-        <!--<action
-            android:id="@+id/action_navigation_laligaStanding_to_navigation_teamDetail"
-            app:destination="@id/navigation_details" />-->
     </fragment>
 
     <fragment
@@ -30,9 +24,6 @@
         android:name="com.example.thefootballapp.ui.bundes.standing.BundesStandingFragment"
         android:label="@string/laliga"
         tools:layout="@layout/fragment_bundes_standing">
-        <!--<action
-            android:id="@+id/action_navigation_bundesStanding_to_navigation_teamDetail"
-            app:destination="@id/navigation_details" />-->
     </fragment>
 
     <fragment
@@ -40,15 +31,5 @@
         android:name="com.example.thefootballapp.ui.premier.match.PremierMatchFragment"
         android:label="@string/laliga"
         tools:layout="@layout/fragment_premier_match"/>
-
-    <!--<fragment
-        android:id="@+id/navigation_details"
-        android:name="com.example.thefootballapp.ui.team.TeamDetailFragment"
-        android:label="@string/team_detail"
-        tools:layout="@layout/fragment_team_detail" >
-        <argument
-            android:name="id"
-            app:argType="integer" />
-    </fragment>-->
 
 </navigation>
